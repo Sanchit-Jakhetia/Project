@@ -1,9 +1,10 @@
-package project;
+package maintenance;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 public class LoginForm extends JFrame {
 
@@ -13,6 +14,7 @@ public class LoginForm extends JFrame {
         setSize(300, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridBagLayout());
+        setLocationRelativeTo(null);
 
         // Create components
         JLabel phoneLabel = new JLabel("Mobile Number:");
@@ -61,16 +63,21 @@ public class LoginForm extends JFrame {
                 if (!ValidationUtils.isValidPhoneNumber(phone)) {
                     String phoneErrorMessage = "Invalid phone number. Please ensure:\n" +
                                                "- It contains exactly 10 digits.\n" +
-                                               "- It starts with a digit between 7 and 9.";
+                                               "- It starts with a digit between 6 and 9.";
                     JOptionPane.showMessageDialog(null, phoneErrorMessage);
                 } else {
-                    // Logic for login verification goes here
-                    // Placeholder for successful login message or failure message
-                    JOptionPane.showMessageDialog(null, "Phone: " + phone + "\nPassword: " + password);
+                    // Check credentials from file
+                    if (verifyLogin(phone, password)) {
+                        JOptionPane.showMessageDialog(null, "Login successful!");
+                        // Open the StudentDashboard after successful login
+                        dispose();  // Close the login form
+                        new StudentDashboard(phone);  // Open the student dashboard with the phone number of the logged-in user
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Invalid credentials. Please try again.");
+                    }
                 }
             }
         });
-
 
 
         signUpLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -81,6 +88,27 @@ public class LoginForm extends JFrame {
                 registrationForm.setVisible(true);
             }
         });
+    }
+
+    private boolean verifyLogin(String phone, String password) {
+        // File path for StudentDetails.txt
+        String studentFilePath = "D:\\Codes\\Java\\University\\src\\maintenance\\StudentDetails.txt";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(studentFilePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] credentials = line.split(","); // Assuming format: firstName,lastName,phone,email,course,specialization,password
+                if (credentials.length == 7) {
+                    // Check if the phone number and password match
+                    if (credentials[2].equals(phone) && credentials[6].equals(password)) {
+                        return true; // Login successful
+                    }
+                }
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error reading file: " + e.getMessage());
+        }
+        return false; // If no matching credentials are found
     }
 
     public static void main(String[] args) {
