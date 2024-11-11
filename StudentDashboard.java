@@ -123,7 +123,7 @@ public class StudentDashboard extends JFrame {
 
         if (feedback != null && !feedback.isEmpty()) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\Codes\\Java\\University\\src\\maintenance\\Feedback.txt", true))) {
-                writer.write(feedback);
+                writer.write("- "+feedback);
                 writer.newLine();
                 JOptionPane.showMessageDialog(this, "Feedback submitted successfully!");
             } catch (IOException e) {
