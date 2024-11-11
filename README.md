@@ -1,75 +1,104 @@
-# Project
 # University Admission & Maintenance System
 
-A Java-based project designed to streamline the university admission process by offering features such as student registration, login, and a personalized student dashboard. This system also includes options for students to opt into email notifications and stores all data in structured text files.
+## Project Overview
+
+The **University Admission & Maintenance System** is a Java-based desktop application designed to streamline and manage university student data and administrative tasks. The system allows both students and administrators to interact through a user-friendly interface built using **Java Swing**. It includes features such as student registration, login, feedback, attendance tracking, and timetable management, as well as administrative functionalities for managing student details, course information, and notifications.
+
+This system supports a **student portal** for managing personal information, course selection, and feedback submission, and an **admin dashboard** for managing student records, viewing feedback, and maintaining university operations. 
 
 ## Features
 
-### 1. Student Registration
-- **Registration Form**: Students register by filling out a form with details like first name, last name, phone number, email, course, specialization, and password.
-- **Opt-In Notifications**: An optional checkbox allows students to subscribe to notifications; if selected, their email is stored separately.
-- **Data Storage**: Registration data is securely stored in a CSV-like format (`StudentDetails.txt`), with the password hidden.
-- **Validation**: Email and password inputs are validated to ensure correctness and security.
+### Student Portal:
+- **Student Registration**: Allows new students to register by providing personal details, selecting courses, and setting a password for future login.
+- **Student Login**: Students can securely log into the system using their registered email and password.
+- **Timetable View**: Students can view their personalized timetable after login, which can only be modified by administrators.
+- **Feedback System**: Students can submit feedback and ratings regarding the courses they are enrolled in.
+- **Attendance Tracking**: Students can view their attendance details, which are updated by the admin.
 
-### 2. Student Login
-- **Login Access**: Students log in with their mobile number and password.
-- **Verification**: Login credentials are verified by checking `StudentDetails.txt` for matching entries.
-- **Student Dashboard**: Upon successful login, students are redirected to a personalized dashboard.
+### Admin Dashboard:
+- **Admin Login**: The admin can securely log in to the system using credentials stored in a CSV file.
+- **Student Management**: Admins can view and manage student records, including adding new students and updating existing information.
+- **Course and Specialization Management**: Admins can manage available courses and their specializations, ensuring up-to-date data for students to choose from.
+- **Timetable Management**: Admins can modify the timetable, ensuring the schedule reflects the most current academic offerings.
+- **Notification System**: Admins can send notifications to students about important updates, announcements, or changes in the system.
 
-### 3. Student Dashboard
-- **Read-Only Data Display**: Displays student details (Name, Mobile Number, Email, etc.) in a read-only format, with the password masked as "******" for security.
-- **Data Protection**: All fields are non-editable, ensuring that student data remains secure.
+## Technologies Used
 
-### 4. Email Notifications
-- **Subscription List**: Students opting into notifications have their emails stored in a separate file, `Email.txt`.
-- **Notification Management**: `Email.txt` serves as a reference for students who have consented to receive updates.
+- **Java Swing**: For the graphical user interface (GUI), providing a desktop-based application for both the admin and student interfaces.
+- **File Handling**: For data storage and management of student and admin records using CSV files.
+- **Regular Expressions**: For validating student and admin login credentials, including email and password formats.
+- **BufferedWriter**: For saving student registration details and admin login credentials into CSV files.
 
-## Project Structure
+## How to Run
 
-### File Organization
-- **StudentDetails.txt**: Stores all student registration data in a comma-separated format:
-  ```
-  John,Doe,9234567890,john.doe@example.com,B.Tech,CSE,secret123
-  ```
-- **Email.txt**: Contains emails of students who have opted for notifications.
+### Prerequisites:
+1. **Java Development Kit (JDK)**: Ensure that Java is installed on your machine.
+2. **IDE**: You can use any IDE for Java development, such as IntelliJ IDEA, Eclipse, or NetBeans.
+   
+### Steps to Run the Project:
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/yourusername/UniversityAdmissionMaintenanceSystem.git
+   ```
+   
+2. **Open the Project**:
+   Open the project in your preferred IDE.
+   
+3. **Compile and Run**:
+   - Compile the Java files.
+   - Run the `Main` class to start the system.
+   
+   Alternatively, you can run individual components like the **RegistrationForm**, **LoginForm**, **AdminLogin**, and **AdminDashboard** from their respective files.
 
-### Workflow Overview
+## File Structure
 
-#### Registration Process
-1. Students fill out the registration form and submit.
-2. Data validation is conducted:
-   - **Email Validation**: Uses regex to ensure email format accuracy.
-   - **Password Validation**: Enforces specific criteria (length, special characters, etc.).
-3. If notifications are selected, the email is added to `Email.txt`.
-4. Successful registrations are saved to `StudentDetails.txt`, and the form is reset.
+```
+UniversityAdmissionMaintenanceSystem/
+│
+├── src/
+│   ├── maintenance/
+│   │   ├── AdminDashboard.java
+│   │   ├── AdminLogin.java
+│   │   ├── LoginForm.java
+│   │   ├── RegistrationForm.java
+│   │   ├── StudentDetails.csv
+│   │   ├── AdminDetails.csv
+│   │   └── Email.csv
+│   └── Main.java
+└── README.md
+```
 
-#### Login Process
-1. Students log in with their mobile number and password.
-2. Credentials are verified against entries in `StudentDetails.txt`.
-3. On successful login, students are redirected to their Student Dashboard.
+- `AdminDashboard.java`: The admin dashboard UI where the administrator manages student data, timetables, and other operations.
+- `AdminLogin.java`: The admin login window for authentication.
+- `LoginForm.java`: The student login window for authentication.
+- `RegistrationForm.java`: The student registration form for new users.
+- `StudentDetails.csv`: A CSV file containing student records with their details.
+- `AdminDetails.csv`: A CSV file containing admin credentials for login validation.
+- `Email.csv`: A CSV file to store student emails for sending notifications.
+  
+## CSV Files
 
-#### Dashboard Display
-- The dashboard shows student details in a vertical, read-only format.
-- Password is hidden and displayed as "******" to protect sensitive information.
+### StudentDetails.csv
+This file stores the details of registered students:
+```
+FirstName,LastName,MobileNumber,Email,Course,Specialization,Password
+```
 
-## Technical Components
+### AdminDetails.csv
+This file stores the credentials of admin users:
+```
+AdminEmail,AdminPassword
+```
 
-- **Java Swing**: Provides GUI components (forms, buttons, labels, etc.).
-- **File Handling**: Utilizes Java’s `BufferedWriter` and `BufferedReader` for text file management.
-- **Regex**: Validates email format and ensures proper input data.
-- **Input Validation**: Checks for valid mobile numbers and passwords to maintain data integrity.
+### Email.csv
+This file stores the emails of students who have agreed to receive notifications.
 
-## Future Enhancements (Optional)
+## Future Enhancements
+- **Database Integration**: Replace file-based storage with a relational database for better scalability and security.
+- **Advanced User Authentication**: Implement password hashing and secure login methods for better security.
+- **Admin Management**: Allow the admin to modify the student's timetable directly through the interface.
+- **Student Dashboard**: Add features such as viewing grades, exam results, and course progress.
 
-- **Admin Dashboard**: Implement an interface for administrators to view and manage student records.
-- **Password Encryption**: Enhance security by encrypting passwords before storage.
-- **Database Migration**: Consider transitioning to SQLite or MySQL for better scalability and performance.
+## Conclusion
 
-## Summary
-
-The University Admission & Maintenance System currently enables:
-- Student registration and secure login.
-- Personalized dashboards with protected data display.
-- Collection of notification preferences and secure data storage in text files.
-
-Future extensions could include an admin interface, encrypted passwords, and a shift to a more robust database for scalability.
+The **University Admission & Maintenance System** offers a comprehensive solution for managing university operations and student information. This project provides a simple yet powerful approach to handling registrations, timetables, and feedback while offering easy-to-use interfaces for both students and administrators. The modular structure of the project allows for easy future enhancements and scalability.
