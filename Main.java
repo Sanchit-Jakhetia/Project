@@ -5,63 +5,53 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+@SuppressWarnings("serial")    //Just to remove the yellow error line from code
 public class Main extends JFrame {
 
     public Main() {
-        // Frame setup
-        setTitle("Welcome to the Project");
-        setSize(400, 200);
+        setTitle("University Admission & Maintenance System");
+        setSize(300, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
         setLayout(new GridBagLayout());
-        
-        // Welcome label
-        JLabel welcomeLabel = new JLabel("Select an Option:");
-        
-        // Buttons for User Login and Admin Login
-        JButton userLoginButton = new JButton("User Login");
-        JButton adminLoginButton = new JButton("Admin Login");
-        
-        // Layout setup
+        setLocationRelativeTo(null);
+
+        JButton applyAdmissionButton = new JButton("Apply Admission");
+        JButton universityLoginButton = new JButton("University Login");
+
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
-        
         gbc.gridx = 0;
         gbc.gridy = 0;
-        add(welcomeLabel, gbc);
+        add(applyAdmissionButton, gbc);
 
         gbc.gridy = 1;
-        add(userLoginButton, gbc);
+        add(universityLoginButton, gbc);
 
-        gbc.gridy = 2;
-        add(adminLoginButton, gbc);
-        
-        // Event handling for User Login button
-        userLoginButton.addActionListener(new ActionListener() {
+        applyAdmissionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose(); // Close Start window
-                LoginForm loginForm = new LoginForm();
-                loginForm.setVisible(true);
+                dispose();
+//*********************************************************************************************************
+                RegistrationForm registrationForm = new RegistrationForm();
+                registrationForm.setVisible(true);
+//*********************************************************************************************************                
             }
         });
 
-        // Event handling for Admin Login button
-        adminLoginButton.addActionListener(new ActionListener() {
+        universityLoginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose(); // Close Start window
-                // Assuming AdminLogin.java will be created with a similar structure to LoginForm
-                AdminLogin adminLogin = new AdminLogin();
-                adminLogin.setVisible(true);
+                dispose();
+//*********************************************************************************************************                
+                UniversityLogin loginWindow = new UniversityLogin();
+                loginWindow.setVisible(true);
+//********************************************************************************************************* 
             }
         });
     }
 
     public static void main(String[] args) {
-        Main startFrame = new Main();
-        // Center the frame on the screen
-        startFrame.setLocationRelativeTo(null);
-        startFrame.setVisible(true);
+        Main mainFrame = new Main();
+        mainFrame.setVisible(true);
     }
 }

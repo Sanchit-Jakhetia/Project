@@ -9,25 +9,19 @@ import java.io.FileReader;
 import java.io.IOException;
 
 @SuppressWarnings("serial")    //Just to remove the yellow error line from code
-public class AdminLogin extends JFrame {
-    
-    private static final String adminFilePath = "D:\\Codes\\Java\\University\\src\\maintenance\\AdminDetails.csv";
-    
-    private JTextField adminIDField;
-    private JPasswordField adminPasswordField;
-    
-    public AdminLogin() {
-        setTitle("Admin Login");
+public class FacultyLogin extends JFrame {
+
+    public FacultyLogin() {
+        setTitle("Faculty Login");
         setSize(400, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridBagLayout());
         setLocationRelativeTo(null);
 
-        JLabel adminIDLabel = new JLabel("Admin ID:");
-        adminIDField = new JTextField(15);
-
-        JLabel adminPasswordLabel = new JLabel("Password:");
-        adminPasswordField = new JPasswordField(15);
+        JLabel usernameLabel = new JLabel("Username:");
+        JTextField usernameField = new JTextField(15);
+        JLabel passLabel = new JLabel("Password:");
+        JPasswordField passField = new JPasswordField(15);
 
         JButton loginButton = new JButton("Login");
 
@@ -36,15 +30,17 @@ public class AdminLogin extends JFrame {
 
         gbc.gridx = 0;
         gbc.gridy = 0;
-        add(adminIDLabel, gbc);
+        add(usernameLabel, gbc);
+
         gbc.gridx = 1;
-        add(adminIDField, gbc);
+        add(usernameField, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 1;
-        add(adminPasswordLabel, gbc);
+        add(passLabel, gbc);
+
         gbc.gridx = 1;
-        add(adminPasswordField, gbc);
+        add(passField, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 2;
@@ -53,44 +49,40 @@ public class AdminLogin extends JFrame {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String ID = adminIDField.getText();
-                String password = new String(adminPasswordField.getPassword());
+                String username = usernameField.getText();
+                String password = new String(passField.getPassword());
 
-                if (validateAdminLogin(ID, password)) {
+                if (validateLogin(username, password)) {
                     JOptionPane.showMessageDialog(null, "Login Successful!");
                     dispose();
 //*********************************************************************************************************                    
-                    AdminDashboard adminDashboard = new AdminDashboard();
-                    adminDashboard.setVisible(true);
+                    FacultyDashboard dashboard = new FacultyDashboard();
+                    dashboard.setVisible(true);
 //*********************************************************************************************************                    
                 } else {
-                    JOptionPane.showMessageDialog(null, "Invalid admin ID or password. Please try again.");
+                    JOptionPane.showMessageDialog(null, "Invalid Username or Password.");
                 }
             }
         });
     }
 
-    private boolean validateAdminLogin(String ID, String password) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(adminFilePath))) {
+    private boolean validateLogin(String username, String password) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("D:\\Codes\\Java\\University\\src\\maintenance\\FacultyDetails.csv"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] details = line.split(",");
-                if (details.length >= 2) {
-                    String registeredID = details[0];  // Assuming ID is the first field
-                    String registeredPassword = details[1]; // Assuming password is the second field
-                    if (registeredID.equals(ID) && registeredPassword.equals(password)) {
-                        return true;
-                    }
+                if (details.length == 2 && details[0].trim().equals(username) && details[1].trim().equals(password)) {
+                    return true;
                 }
             }
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Error reading file: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error reading admin details.");
         }
         return false;
     }
 
     public static void main(String[] args) {
-        AdminLogin adminLogin = new AdminLogin();
+        FacultyLogin adminLogin = new FacultyLogin();
         adminLogin.setVisible(true);
     }
 }
