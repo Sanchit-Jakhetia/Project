@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-The **University Admission & Maintenance System** is a Java-based desktop application designed to streamline and manage university student data and administrative tasks. The system allows both students and administrators to interact through a user-friendly interface built using **Java Swing**. It includes features such as student registration, login, feedback, attendance tracking, and timetable management, as well as administrative functionalities for managing student details, course information, and notifications.
+The **University Admission & Maintenance System** is a Java-based desktop application designed to streamline and manage university student data and administrative tasks. The system allows both students and administrators to interact through a user-friendly interface built using **Java Swing**. It includes features such as student registration, login, feedback, and timetable management, as well as administrative functionalities for managing student details, course information, and notifications.
 
 This system supports a **student portal** for managing personal information, course selection, and feedback submission, and an **admin dashboard** for managing student records, viewing feedback, and maintaining university operations. 
 
