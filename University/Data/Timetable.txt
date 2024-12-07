@@ -1,0 +1,40 @@
+Monday
+------------------------------------------------------------
+9:00 AM - 10:00 AM: DATA STRUCTURES AND ALGORITHM -I
+10:15 AM - 11:15 AM: DISCRETE STRUCTURES
+11:30 AM - 12:30 PM: DIGITAL LOGIC AND IOT SYSTEMS
+1:30 PM - 2:30 PM: COMPUTER ORGANIZATION & ARCHITECTURE
+2:45 PM - 3:45 PM: ENGINEERING MATHEMATICS-III
+------------------------------------------------------------
+Tuesday
+------------------------------------------------------------
+9:00 AM - 10:00 AM: AI AND CYBER ETHICS
+10:15 AM - 11:15 AM: VALUE ADDED COURSE
+11:30 AM - 12:30 PM: DIGITAL LOGIC AND IOT SYSTEMS LAB
+1:30 PM - 2:30 PM: DATA STRUCTURES AND ALGORITHM -I LAB
+2:45 PM - 3:45 PM: OBJECT ORIENTED TECHNIQUES USING JAVA LAB
+------------------------------------------------------------
+Wednesday
+------------------------------------------------------------
+9:00 AM - 10:00 AM: DATA STRUCTURES AND ALGORITHM -I
+10:15 AM - 11:15 AM: DISCRETE STRUCTURES
+11:30 AM - 12:30 PM: DIGITAL LOGIC AND IOT SYSTEMS
+1:30 PM - 2:30 PM: COMPUTER ORGANIZATION & ARCHITECTURE
+2:45 PM - 3:45 PM: ENGINEERING MATHEMATICS-III
+------------------------------------------------------------
+Thursday
+------------------------------------------------------------
+9:00 AM - 10:00 AM: AI AND CYBER ETHICS
+10:15 AM - 11:15 AM: VALUE ADDED COURSE
+11:30 AM - 12:30 PM: DIGITAL LOGIC AND IOT SYSTEMS LAB
+1:30 PM - 2:30 PM: DATA STRUCTURES AND ALGORITHM -I LAB
+2:45 PM - 3:45 PM: OBJECT ORIENTED TECHNIQUES USING JAVA LAB
+------------------------------------------------------------
+Friday
+------------------------------------------------------------
+9:00 AM - 10:00 AM: DATA STRUCTURES AND ALGORITHM -I
+10:15 AM - 11:15 AM: DISCRETE STRUCTURES
+11:30 AM - 12:30 PM: DIGITAL LOGIC AND IOT SYSTEMS
+1:30 PM - 2:30 PM: COMPUTER ORGANIZATION & ARCHITECTURE
+2:45 PM - 3:45 PM: ENGINEERING MATHEMATICS-III
+------------------------------------------------------------
