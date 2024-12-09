@@ -4,3 +4,5 @@
 ### The <ins>management</ins> folder contains all the code for this project as it is a package.
 ### To run the program, run the <ins>Main.java</ins> file, which is the starting point.
 ### The <ins>Data</ins> folder is for all the CSV files which is used as database
+### To change the background image you can replace the image in the University>Image directory 
+### image name and type must be same
